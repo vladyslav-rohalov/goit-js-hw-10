@@ -17,11 +17,13 @@
     "url": "https://github.com/vladyslav-rohalov/goit-js-hw-10/issues"
   },
   "dependencies": {
+    "handlebars": "^4.7.7",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5"
   },
   "devDependencies": {
     "parcel": "^2.8.1",
-    "parcel-reporter-clean-dist": "^1.0.4"
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "parcel-transformer-hbs": "^1.0.4"
   }
 }

@@ -1,0 +1,19 @@
+<div class='country-info__headline'>
+  <img src='{{coatOfArms.png}}' alt='flaf of {{name.common}}' width='20px' />
+  <h2 class='country-info__title'>{{name.common}}</h2>
+</div>
+<ul class='country-info__list'>
+  <li class='country-info__item'>
+    <span class='country-info__item--bold'>Capital:&nbsp;</span>{{capital}}
+  </li>
+  <li class='country-info__item'>
+    <span
+      class='country-info__item--bold'
+    >Population:&nbsp;</span>{{population}}
+  </li>
+  <li class='country-info__item'>
+    <span class='country-info__item--bold'>Languages:&nbsp;</span>{{#each
+      languages
+    }}{{this}}{{/each}}
+  </li>
+</ul>
