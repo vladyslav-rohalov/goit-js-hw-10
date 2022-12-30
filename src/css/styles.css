@@ -23,13 +23,18 @@ img {
   display: block;
 }
 
+.country-list {
+  padding: 0;
+  margin: 0;
+}
+
 .country-info__headline {
   display: flex;
   align-items: center;
 }
 
 .country-info__title {
-  margin-left: 10px;
+  margin: 0 0 10px 10px;
 }
 
 .country-info__list {
