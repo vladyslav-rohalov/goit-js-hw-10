@@ -3,7 +3,7 @@ import Notiflix from 'notiflix';
 import counrtyCardTmpl from './country-card.hbs';
 import countryListTmpl from './country-list.hbs';
 import CountryApiService from './js/api-service';
-import refs from './js/refs';
+import { refs } from './js/refs';
 
 const debounce = require('lodash.debounce');
 const Handlebars = require('handlebars');
