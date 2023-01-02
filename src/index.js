@@ -1,4 +1,5 @@
 import './css/styles.css';
+import './js/hd';
 import Notiflix from 'notiflix';
 import counrtyCardTmpl from './country-card.hbs';
 import countryListTmpl from './country-list.hbs';
@@ -6,15 +7,16 @@ import CountryApiService from './js/api-service';
 import { refs } from './js/refs';
 
 const debounce = require('lodash.debounce');
-const Handlebars = require('handlebars');
 const DEBOUNCE_DELAY = 300;
-
 const countryApiService = new CountryApiService();
 
 refs.input.addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY));
+
 function onFormInput(e) {
   countryApiService.query = e.target.value;
-  countryApiService.fetchCountry().then(checkQuery);
+  if (countryApiService.query !== '') {
+    countryApiService.fetchCountry().then(checkQuery);
+  } else return;
 }
 
 function checkQuery(value) {
@@ -48,17 +50,3 @@ function clearMurkup() {
 function queryError() {
   Notiflix.Notify.failure('"Oops, there is no country with that name"');
 }
-
-Handlebars.registerHelper('formatProp', function (prop) {
-  let arr = [];
-  for (let val of Object.values(prop)) {
-    arr.push(` ${val}`);
-  }
-  return arr;
-});
-
-Handlebars.registerHelper('formatIfNone', function (prop) {
-  if (prop !== '') {
-    return prop;
-  } else return 'https://mainfacts.com/media/images/coats_of_arms/ua.svg';
-});

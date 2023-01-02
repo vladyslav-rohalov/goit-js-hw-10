@@ -7,9 +7,7 @@ export default class CountryApiService {
     const url = `https://restcountries.com/v3.1/name/${this.searchQuery}?fields=name,capital,population,coatOfArms,languages`;
     return fetch(url)
       .then(response => response.json())
-      .then(country => {
-        return country;
-      });
+      .then(country => country);
   }
 
   get query() {
