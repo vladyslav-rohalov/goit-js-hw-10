@@ -1,5 +1,5 @@
 import './css/styles.css';
-import './js/hd';
+import './js/hb';
 import Notiflix from 'notiflix';
 import counrtyCardTmpl from './country-card.hbs';
 import countryListTmpl from './country-list.hbs';
@@ -10,13 +10,14 @@ const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
 const countryApiService = new CountryApiService();
 
-refs.input.addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY));
+//debounce(onFormInput, DEBOUNCE_DELAY)
+refs.input.addEventListener('input', onFormInput);
 
 function onFormInput(e) {
   countryApiService.query = e.target.value;
   if (countryApiService.query !== '') {
     countryApiService.fetchCountry().then(checkQuery);
-  } else return;
+  }
 }
 
 function checkQuery(value) {
