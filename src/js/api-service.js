@@ -6,24 +6,10 @@ export default class CountryApiService {
 
   async fetchCountry() {
     try {
-      const controller = new AbortController();
-      const signal = controller.signal;
       const url = `https://restcountries.com/v3.1/name/${this.searchQuery}${this.queryParams}`;
-      const response = await fetch(url, { signal: signal });
-      let isLoading = false;
-      const modifiedUrl = `https://restcountries.com/v3.1/name/${this.searchQuery}${this.queryParams}`;
-      if (response.status === 200) {
-        isLoading = true;
-      }
+      const response = await fetch(url);
       const country = await response.json();
-      if (isLoading && url === modifiedUrl) {
-        console.log('Сервер відвовів 200 та запит НЕ змінился');
-        isLoading = false;
-        return country;
-      } else {
-        console.log('Сервер не встиг відвовісти 200 та/або запит змінился');
-        controller.abort();
-      }
+      return country;
     } catch (err) {
       throw err;
     }

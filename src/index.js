@@ -10,8 +10,7 @@ const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
 const countryApiService = new CountryApiService();
 
-//debounce(onFormInput, DEBOUNCE_DELAY)
-refs.input.addEventListener('input', onFormInput);
+refs.input.addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY));
 
 function onFormInput(e) {
   countryApiService.query = e.target.value;
